@@ -2,6 +2,7 @@ package reindex;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import dataconfig.DC;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexResponse;
@@ -74,7 +75,6 @@ public class EsOperation {
         String[] ips = StringUtil.getArrays(ip);
         String[] logs = StringUtil.getArrays(businesslog);
         SearchResponse scrollResp = transportClient.prepareSearch(indexName)
-        transportClient.
                 .setTypes()
                 //多条件搜索，只能使用一个setQuery;使用多个的话，只有最后一个setQuery生效
                 .setQuery(QueryBuilders.boolQuery()
